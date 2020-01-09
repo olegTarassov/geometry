@@ -3,10 +3,54 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 2.0.2 - unreleased
+## Unreleased
+
+### Improved
+- lazy load functions with autoload instead of sourcing (thanks @alxbl!)
+
+### Added
+- geometry_newline for two-line prompts (thanks @ducklin5)
+
+### Fixed
+- geometry_git complaining when not in a work-tree
+- geometry_git works in submodules now, (thanks @JokeNeverSoke!)
+
+### Removed
+- GEOMETRY_GIT_SEPARATOR hidden feature, was the only function that didnt work like the others.
+Now uses GEOMETRY_SEPARATOR like everything else.
+
+## 2.0.5 - 2019-10-14
+
+### Fixed
+- Problem sourcing functions
+
+## 2.0.4 - 2019-10-14
+
+### Fixed
+- Breaking GEOMETRY_SEPARATOR, especially on left prompt (thanks @diogoazevedos!)
+
+### Improved
+- Respond to changes in GEOMETRY_SEPARATOR dynamically
+- Reduced core to 62 lines
+
+## 2.0.3 - 2019-10-11
+
+### Added
+- geometry_exitcode - from @alxbl, a way to see the exact exit code in the prompt
+
+### Fixed
+- Accidental export of local `fun` variable
+- extra "'" in separator for geometry_hg
+- Quoting for zsh 5.0.0 - thanks @psprint
+- Hid GEOMETRY_TIME_COLOR_SHORT, NEUTRAL, LONG, ROOT, EXEC_TIME_FILE, and LAST_STATUS under GEOMETRY array
+- Renamed PCFD to GEOMETRY_ASYNC_FD
+
+## 2.0.2 - 2019-09-04
+
 ### Fixed
 - Use default terminal color instead of white
 - Improve geometry_kube logic (thanks @olegTarassov!)
+- Showing git checkout when HEAD is not a symbolic ref
 
 ### Added
 - GEOMETRY_KUBE_SEPARATOR (thanks @olegTarassov!)

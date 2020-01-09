@@ -1,6 +1,6 @@
 # geometry
 
-![geometry](images/branding/readme-logo.png)
+![geometry logo by @MarioRicalde](images/branding/readme-logo.png)
 
 > a minimalistic, fully customizable zsh prompt theme
 
@@ -60,6 +60,8 @@ Please check out and share third-party functions on our [functions wiki page][]
 
 For more details on how to create a function, check out [our contribution guide][]
 
+If you prefer a two-line prompt, try `GEOMETRY_PROMPT+=(geometry_newline)`
+
 ## Configuration
 
 You can configure everything in geometry by defining a variable.
@@ -82,10 +84,14 @@ GEOMETRY_STATUS_SYMBOL_ERROR="△"       # displayed when exit value is != 0
 GEOMETRY_STATUS_COLOR_ERROR="magenta"  # prompt symbol color when exit value is != 0
 GEOMETRY_STATUS_COLOR="default"        # prompt symbol color
 GEOMETRY_STATUS_COLOR_ROOT="red"       # root prompt symbol color
-GEOMETRY_STATUS_COLOR_HASH=true        # color status symbol based on hostname
 ```
 
-![colorize](/images/screenshots/colorize.png)
+### geometry_exitcode
+This renders the exit code of the previous function if it is not success.
+
+```shell
+GEOMETRY_EXITCODE_COLOR="red" # exit code color
+```
 
 ### geometry_git
 
@@ -104,9 +110,24 @@ GEOMETRY_GIT_TIME_DETAILED=true     # show full time (e.g. `12h 30m 53s`) instea
 
 ![git_conflicts](/images/screenshots/git_conflicts.png)
 
+## Hostname based colors
+Geometry provides a generic function (`geometry::hostcolor`) for setting any color based on hostname. The color is calculated as the sum of each character converted to an integer. For example the hostname 'abc' generates a value of 294.
+
+By default the colors 1-9 and 17-230 are used as colors depending on what the environment supports. The calculated value is then modded by the size of the color list to choose a value. This value will be consistent given the same hostname.
+
+These colors can be overridden by setting variables.
+
+```shell
+GEOMETRY_HOST_COLORS=({1..7})  # Only use the colors 1-7
+GEOMETRY_HOST_COLOR=4          # Override the color for a specific host. 
+``` 
+![colorize](/images/screenshots/colorize.png)
+
 ## Thanks
 
-geometry is maintained by [fribmendes](https://github.com/fribmendes), [desyncr](https://github.com/desyncr) and [jedahan](https://github.com/jedahan).
+geometry is maintained by [frm](https://github.com/frm), [desyncr](https://github.com/desyncr) and [jedahan](https://github.com/jedahan).
+
+Thank you [MarioRicalde](https://github.com/MarioRicalde) for the lovely logos and branding.
 
 A big thank you to the dozens of [additional contributors](https://github.com/geometry-zsh/geometry/graphs/contributors).
 
